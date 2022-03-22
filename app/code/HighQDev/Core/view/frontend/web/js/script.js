@@ -9,7 +9,6 @@ require([
             logoLink.addClass("cur-pointer");
         }
         $(".logo").click(function () {
-            alert("This is simple alert");
             let body = $('body');
             if (body.hasClass("bkc-yellow")) {
                 body.removeClass("bkc-yellow");
