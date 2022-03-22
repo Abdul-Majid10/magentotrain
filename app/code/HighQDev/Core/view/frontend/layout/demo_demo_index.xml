@@ -3,6 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="HighQDev_Core::css/style.css"/>
+        <link src="HighQDev_Core::js/script.js" />
     </head>
     <body>
         <referenceContainer name="content">

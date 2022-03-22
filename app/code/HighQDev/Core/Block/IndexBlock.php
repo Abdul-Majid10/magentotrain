@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace HighQDev\Core\Block;
 
-use Magento\Customer\Model\Session;
+use Magento\Customer\Model\SessionFactory;
 use Magento\Framework\View\Element\Template;
 
 /**
@@ -13,21 +13,25 @@ use Magento\Framework\View\Element\Template;
 class IndexBlock extends \Magento\Framework\View\Element\Template
 {
     /**
-     * @var Session
+     * @var SessionFactory
      */
-    protected $custumerSession;
+    protected $customerSessionFactory;
 
     /**
      * IndexBlock constructor.
      * @param Template\Context $context
-     * @param Session $custumerSession
+     * @param SessionFactory $customerSessionFactory
      * @param array $data
      */
-    public function __construct(Template\Context $context, Session $custumerSession, array $data = [])
+    public function __construct(
+        Template\Context $context,
+        SessionFactory $customerSessionFactory,
+        array $data = [])
     {
+        $this->customerSessionFactory = $customerSessionFactory;
         parent::__construct($context, $data);
-        $this->custumerSession = $custumerSession;
     }
+
 
     /**
      * @return string
@@ -35,8 +39,9 @@ class IndexBlock extends \Magento\Framework\View\Element\Template
      */
     public function getLoginMessage()
     {
-        if ($this->custumerSession->isLoggedIn()) {
-            return "Welcome " . $this->custumerSession->getCustomer()->getName() . ", Thanks For Login!";
+        $customerSession = $this->customerSessionFactory->create();
+        if ($customerSession->isLoggedIn()) {
+            return "Welcome " . $customerSession->getCustomer()->getName() . ", Thanks For Login!";
         } else {
             return "This is Guest checkout, Nobody is loggedIn.";
         }

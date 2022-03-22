@@ -1,3 +1,14 @@
 body{
     background-color: #85BBEF;
 }
+.bkc-green{
+    background-color: green;
+}
+
+.bkc-yellow{
+    background-color: yellow;
+}
+
+.cur-pointer{
+    cursor: pointer;
+}
