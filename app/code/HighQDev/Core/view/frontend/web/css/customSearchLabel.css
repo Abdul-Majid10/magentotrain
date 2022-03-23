@@ -1,0 +1,20 @@
+@media (min-width: 768px){
+    .block-search-override {
+        width: 450px;
+    }
+
+    .block-search .control {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .serach-box-promote{
+        margin-top: 1rem;
+    }
+}
+
+input[type="text"]{
+    width: 50%;
+}
+    .
