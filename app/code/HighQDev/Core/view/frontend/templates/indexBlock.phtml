@@ -8,3 +8,16 @@ $message = $block->getLoginMessage();
 ?>
 
 <h1><?= $message ?></h1>
+
+<h2>Please Add Comments</h2>
+<div class="container flex-model">
+    <div class="my-form form-inline">
+        <form name="comment_form" method="POST" action="<?= $block->getUrl('demo/comments/addcomment') ?>" id="comment_form">
+            <label class="my-label" for="productSKU">Product SKU:</label>
+            <input class="my-inputs" type="text" id="productSKU" name="productSKU"><br>
+            <label class="my-label" for="comment">Comment:</label>
+            <input  class="my-inputs" type="text" id="comment" name="comment">
+            <input id="submit-btn" type="submit" Value="Submit">
+        </form>
+    </div>
+</div>
