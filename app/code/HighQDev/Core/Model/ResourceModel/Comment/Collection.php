@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace HighQDev\Core\Model\ResourceModel\Comment;
 
@@ -8,7 +9,7 @@ namespace HighQDev\Core\Model\ResourceModel\Comment;
  */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
-    protected $_idFieldName = 'comment_id';
+    protected $_idFieldName = 'entity_id';
     protected $_eventPrefix = 'highqdev_core_comment_collection';
     protected $_eventObject = 'comment_collection';
 

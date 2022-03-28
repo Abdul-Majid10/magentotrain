@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace HighQDev\Core\Controller\Comments;
 
-use HighQDEV\Core\Model\CommentFactory;
+use HighQDev\Core\Model\CommentFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
@@ -47,12 +47,14 @@ class AddComment extends Action
      */
     public function execute()
     {
-        $this->messageManager->addSuccessMessage("Comment Added");
-
+        /**
+         * @var $comment \HighQDev\Core\Model\Comment
+         */
         $comment = $this->commentFactory->create();
 
-        $comment->setData("sku", $this->_request->getParam('productSKU'));
-        $comment->setData("comment_text", $this->_request->getParam('comment'));
+        $comment->setSku($this->_request->getParam('productSKU'));
+        $comment->setCommentText($this->_request->getParam('comment'));
+        $comment->setCommentApproved(false);
 
         $comment->save();
 
