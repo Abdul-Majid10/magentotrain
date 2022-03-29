@@ -1,44 +1,35 @@
 <?php
 declare(strict_types=1);
 
-namespace HighQDev\Core\Controller\Demo;
+namespace HighQDev\Core\Controller\Comments;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
- * Class Index
- * @package HighQDev\Core\Controller\Demo
+ * Class View
+ * @package HighQDev\Core\Controller\Comments
  */
-class Index extends Action
+class View extends Action
 {
-    /**
-     * @var JsonFactory
-     */
-    protected $resultJsonFactory;
-
     /**
      * @var PageFactory
      */
     protected $_pageFactory;
 
     /**
-     * Index constructor.
+     * View constructor.
      * @param Context $context
-     * @param JsonFactory $resultJsonFactory
      * @param PageFactory $pageFactory
      */
     public function __construct(
         Context $context,
-        JsonFactory $resultJsonFactory,
         PageFactory $pageFactory
     )
     {
         parent::__construct($context);
-        $this->resultJsonFactory = $resultJsonFactory;
         $this->_pageFactory = $pageFactory;
     }
 

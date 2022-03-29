@@ -11,6 +11,15 @@
                 </arguments>
             </block>
         </referenceBlock>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current"
+                   name="customer-account-navigation-view-comment-link" after="-">
+                <arguments>
+                    <argument name="path" xsi:type="string">demo/comments/view</argument>
+                    <argument name="label" xsi:type="string" translate="true">View Comments</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
     </body>
 </page>
 
