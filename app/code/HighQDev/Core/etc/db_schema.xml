@@ -5,6 +5,7 @@
         <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
                 comment="Entity ID"/>
         <column xsi:type="varchar" name="sku" nullable="false" length="64" comment="SKU"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="CUSTOMER_ID"/>
         <column xsi:type="varchar" name="comment_text" nullable="false" length="255" default="Nothing"
                 comment="USER COMMENT"/>
         <column xsi:type="boolean" name="comment_approved" nullable="false" default="false"
@@ -12,5 +13,8 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>
+        <constraint xsi:type="foreign" referenceId="HIGHQDEV_COMMENT_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID"
+                    table="highqdev_comment" column="customer_id" referenceTable="customer_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
     </table>
 </schema>

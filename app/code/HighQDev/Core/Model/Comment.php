@@ -13,6 +13,7 @@ class Comment extends \Magento\Framework\Model\AbstractModel implements \Magento
     const SKU = 'sku';
     const COMMENT_TEXT = 'comment_text';
     const COMMENT_APPROVED = 'comment_approved';
+    const CUSTOMER_ID = 'customer_id';
 
     /**
      * @var string
@@ -64,6 +65,14 @@ class Comment extends \Magento\Framework\Model\AbstractModel implements \Magento
     }
 
     /**
+     * @return String
+     */
+    public function getCustomerId()
+    {
+        return $this->getData(self::CUSTOMER_ID);
+    }
+
+    /**
      * @param int $entityId
      * @return Comment
      */
@@ -88,6 +97,15 @@ class Comment extends \Magento\Framework\Model\AbstractModel implements \Magento
     public function setCommentText($comment_text)
     {
         return $this->setData(self::COMMENT_TEXT, $comment_text);
+    }
+
+    /**
+     * @param $customer_id
+     * @return Comment
+     */
+    public function setCustomerId($customer_id)
+    {
+        return $this->setData(self::CUSTOMER_ID, $customer_id);
     }
 
     /**

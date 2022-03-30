@@ -3,22 +3,18 @@ declare(strict_types=1);
 
 namespace HighQDev\Core\Controller\Demo;
 
-use Magento\Framework\App\Action\Action;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
+use Magento\Review\Controller\Customer;
 
 /**
  * Class Index
  * @package HighQDev\Core\Controller\Demo
  */
-class Index extends Action
+class Index extends Customer
 {
-    /**
-     * @var JsonFactory
-     */
-    protected $resultJsonFactory;
 
     /**
      * @var PageFactory
@@ -28,18 +24,17 @@ class Index extends Action
     /**
      * Index constructor.
      * @param Context $context
-     * @param JsonFactory $resultJsonFactory
      * @param PageFactory $pageFactory
+     * @param Session $customerSession
      */
     public function __construct(
         Context $context,
-        JsonFactory $resultJsonFactory,
-        PageFactory $pageFactory
+        PageFactory $pageFactory,
+        Session $customerSession
     )
     {
-        parent::__construct($context);
-        $this->resultJsonFactory = $resultJsonFactory;
         $this->_pageFactory = $pageFactory;
+        parent::__construct($context, $customerSession);
     }
 
     /**

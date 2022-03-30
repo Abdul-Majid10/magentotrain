@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace HighQDev\Core\Controller\Comments;
 
 use HighQDev\Core\Model\CommentFactory;
+use Magento\Customer\Model\SessionFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
@@ -25,19 +26,27 @@ class AddComment extends Action
     protected $commentFactory;
 
     /**
+     * @var SessionFactory
+     */
+    protected $sessionFactory;
+
+    /**
      * AddComment constructor.
      * @param Context $context
      * @param ResultFactory $resultFactory
      * @param CommentFactory $commentFactory
+     * @param SessionFactory $sessionFactory
      */
     public function __construct(
         Context $context,
         ResultFactory $resultFactory,
-        CommentFactory $commentFactory
+        CommentFactory $commentFactory,
+        SessionFactory $sessionFactory
     )
     {
         $this->resultFactory = $resultFactory;
         $this->commentFactory = $commentFactory;
+        $this->sessionFactory = $sessionFactory;
         parent::__construct($context);
     }
 
@@ -52,17 +61,38 @@ class AddComment extends Action
          */
         $comment = $this->commentFactory->create();
 
-        $comment->setSku($this->_request->getParam('productSKU'));
-        $comment->setCommentText($this->_request->getParam('comment'));
-        $comment->setCommentApproved(false);
+        /**
+         * @var $customerSession \Magento\Customer\Model\Session
+         */
+        $customerSession = $this->sessionFactory->create();
 
-        $comment->save();
+        /**
+         * @var $sku int
+         */
+        $sku = $this->_request->getParam('productSKU');
 
-        $this->messageManager->addSuccessMessage("Comment Added");
+        /**
+         * @var $commentText String
+         */
+        $commentText = $this->_request->getParam('comment');
 
+        /**
+         * @var $customerId int
+         */
+        $customerId = (int)$customerSession->getCustomerId();
+        if ($sku !== '' && $commentText !== '') {
+            $comment->setSku($sku);
+            $comment->setCommentText($commentText);
+            $comment->setCommentApproved(false);
+            $comment->setCustomerId($customerId);
+            $comment->save();
+            $this->messageManager->addSuccessMessage("Comment Added");
+        } else {
+            $this->messageManager->addErrorMessage("Request Failed");
+            $this->messageManager->addWarningMessage("Make Sure You Write Product SKU and Comment");
+        }
         $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
         $redirect->setUrl('/demo/demo/index');
-
         return $redirect;
     }
 }
