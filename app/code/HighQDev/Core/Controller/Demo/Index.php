@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_type=1);
 
 namespace HighQDev\Core\Controller\Demo;
 
