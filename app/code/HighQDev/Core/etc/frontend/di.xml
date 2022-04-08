@@ -3,6 +3,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Catalog\Model\Product" type="HighQDev\Core\Model\Product"/>
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="highqdev_core_product" type="HighQDev\Core\Plugin\Product" sortOrder="10"/>
+        <plugin name="highqdev_core_product" type="HighQDev\Core\Plugin\Product" sortOrder="10" disabled="false" />
     </type>
 </config>
