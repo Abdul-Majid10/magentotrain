@@ -5,41 +5,32 @@ namespace HighQDev\Core\Controller\Demo;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
- * Class Index
+ * Class Offer
  * @package HighQDev\Core\Controller\Demo
  */
-class Index extends Action
+class Offer extends Action
 {
-    /**
-     * @var JsonFactory
-     */
-    protected $resultJsonFactory;
-
     /**
      * @var PageFactory
      */
     protected $_pageFactory;
 
     /**
-     * Index constructor.
+     * Offer constructor.
      * @param Context $context
-     * @param JsonFactory $resultJsonFactory
      * @param PageFactory $pageFactory
      */
     public function __construct(
         Context $context,
-        JsonFactory $resultJsonFactory,
         PageFactory $pageFactory
     )
     {
-        parent::__construct($context);
-        $this->resultJsonFactory = $resultJsonFactory;
         $this->_pageFactory = $pageFactory;
+        parent::__construct($context);
     }
 
     /**
