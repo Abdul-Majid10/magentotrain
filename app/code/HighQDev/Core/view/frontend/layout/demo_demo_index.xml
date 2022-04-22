@@ -8,7 +8,7 @@
     <body>
         <referenceContainer name="content">
             <block class="HighQDev\Core\Block\IndexBlock" name="demo_demo_index"
-                   template="HighQDev_Core::indexBlock.phtml" cacheable="false"/>
+                   template="HighQDev_Core::indexBlock.phtml"/>
         </referenceContainer>
     </body>
 </page>
