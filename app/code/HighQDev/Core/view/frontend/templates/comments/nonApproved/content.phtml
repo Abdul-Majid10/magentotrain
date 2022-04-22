@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @var $block \HighQDev\Core\Block\Comments\NonApproved\Content
+ */
+
+?>
+<button id="reloadBtn" style="float: right;">Reload Comments</button>
+<div>
+    <p id="loading" style="font-size: 1.5rem">Loading...</p>
+</div>
+
+<div id="ajaxresponse"></div>
+
+<?php
+$ajaxurl = $block->getUrl('demo/comments/getlist');
+$isApproved = 0;
+?>
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "HighQDev_Core/js/custom": {
+                    "AjaxUrl": "<?php echo $ajaxurl; ?>",
+                    "status": <?php echo $isApproved; ?>
+                }
+            }
+        }
+
+</script>

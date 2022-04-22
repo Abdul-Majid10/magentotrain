@@ -9,5 +9,9 @@
             <block class="HighQDev\Core\Block\ViewBlock" name="demo_comments_view"
                    template="HighQDev_Core::ViewBlock.phtml" cacheable="false"/>
         </referenceContainer>
+<!--        <referenceContainer name="content">-->
+<!--            <block class="HighQDev\Core\Block\Comments\Approved\Content" name="demo_comments_view"-->
+<!--                   template="HighQDev_Core::comments/approved/content.phtml" cacheable="false"/>-->
+<!--        </referenceContainer>-->
     </body>
 </page>

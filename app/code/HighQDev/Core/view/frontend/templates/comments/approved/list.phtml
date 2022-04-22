@@ -1,0 +1,44 @@
+<?php
+/**
+ * @var $block \HighQDev\Core\Block\ViewBlock
+ */
+?>
+
+<?php
+$collection = $block->getApprovedComments();
+?>
+
+<h2>Comments</h2>
+
+<?php
+if ($collection->getSize() > 0) {
+    $comments = $collection->getItems();
+    ?>
+    <table class="custom-table">
+        <thead>
+        <tr>
+            <th>SKU</th>
+            <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($comments as $comment) {
+            ?>
+            <tr>
+                <td> <?= $comment->getdata('sku') ?>
+                </td>
+                <td><?= $comment->getdata('comment_text') ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+        </tbody>
+    </table>
+    <?php
+} else {
+    ?>
+    <h3>There is No Comments</h3>
+    <?php
+}
+?>

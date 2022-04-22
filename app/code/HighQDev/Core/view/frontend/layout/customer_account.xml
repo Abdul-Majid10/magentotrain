@@ -20,6 +20,15 @@
                 </arguments>
             </block>
         </referenceBlock>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current"
+                   name="customer-account-navigation-non-approved-comments-link" after="-">
+                <arguments>
+                    <argument name="path" xsi:type="string">demo/comments/nonapproved</argument>
+                    <argument name="label" xsi:type="string" translate="true">Non Approved Comments</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
     </body>
 </page>
 

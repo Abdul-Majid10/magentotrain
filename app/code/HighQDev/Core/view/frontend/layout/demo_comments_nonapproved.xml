@@ -1,0 +1,13 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="HighQDev_Core::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="HighQDev\Core\Block\Comments\NonApproved\Content" name="demo_comments_nonapproved"
+                   template="HighQDev_Core::comments/nonApproved/content.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>
