@@ -1,0 +1,21 @@
+{{template config_path="design/email/header_template"}}
+<table>
+    <tr>
+        {{trans "New Order Come from "}}
+        <b>
+        {{trans "%customerName" customerName=$customerName}}
+        </b>
+    </tr>
+    <br>
+    <tr>
+        {{trans "Total completed orders from "}}
+        <b>
+            {{trans "%customerEmail" customerEmail=$customerEmail}}
+        </b>
+        {{trans "is: "}}
+        <b>
+            {{trans "%totelOrders." totelOrders=$totelOrders}}
+        </b>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}
